@@ -8,15 +8,8 @@ const Model = compose(withFields({ field: object({ list: true }) }))(function() 
 test("should accept string and Object values", () => {
     const model = new Model();
 
-    const isoString1 = "2019-03-27T06:48:37.506Z";
-    const isoString2 = "2019-04-27T06:48:37.506Z";
-
-    const object = new Object();
-    model.field = [isoString1, object];
-    expect(model.field).toEqual([new Object(isoString1), object]);
-
-    model.field = [isoString2, object];
-    expect(model.field).toEqual([new Object(isoString2), object]);
+    model.field = [{}, []];
+    expect(model.field).toEqual([{}, []]);
 
     model.field = [null];
     expect(model.field).toEqual([null]);
@@ -24,13 +17,19 @@ test("should accept string and Object values", () => {
     model.field = [undefined];
     expect(model.field).toEqual([undefined]);
 
-    const object1 = new Object();
-    const object2 = new Object();
+    function Something() {
+        this.a = 123;
+        this.b = 'abc';
+    }
+
+    const object1 = new Something();
+    const object2 = new Something();
+
     model.field = [object1, object2];
     expect(model.field).toEqual([object1, object2]);
 });
 
-[[123], [0], [0.5], [{}], [[]], [false]].forEach(value => {
+[[123], [0], [0.5], [true], [function() {}], [false]].forEach(value => {
     test(`string field shouldn't accept array ${typeof value[0]}s`, async () => {
         const model = new Model();
 

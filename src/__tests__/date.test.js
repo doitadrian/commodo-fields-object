@@ -5,17 +5,14 @@ import { compose } from "ramda";
 
 const Model = compose(withFields({ exampleField: object() }))(function() {});
 describe("field string test", () => {
-    test("should accept string (ISO 8601) values", () => {
+    test("should accept any object values", () => {
         const model = new Model();
 
-        const isoString1 = "2019-03-27T06:48:37.506Z";
-        const isoString2 = "2019-04-27T06:48:37.506Z";
+        model.exampleField = {};
+        expect(model.exampleField).toEqual({});
 
-        model.exampleField = isoString1;
-        expect(model.exampleField.toISOString()).toEqual(isoString1);
-
-        model.exampleField = isoString2;
-        expect(model.exampleField.toISOString()).toEqual(isoString2);
+        model.exampleField = [];
+        expect(model.exampleField).toEqual([]);
 
         model.exampleField = null;
         expect(model.exampleField).toEqual(null);
@@ -24,7 +21,7 @@ describe("field string test", () => {
         expect(model.exampleField).not.toBeDefined();
     });
 
-    [123, 0, 0.5, {}, [], false].forEach(value => {
+    [123, 0, 0.5, "", false, true].forEach(value => {
         test(`shouldn't accept ${typeof value}`, async () => {
             const model = new Model();
 
