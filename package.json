@@ -42,8 +42,7 @@
     "wait-on": "^3.2.0"
   },
   "dependencies": {
-    "@commodo/fields": "^0.2.6",
-    "repropose": "^1.0.2"
+    "@commodo/fields": "^0.2.6"
   },
   "scripts": {
     "cz": "git-cz",
