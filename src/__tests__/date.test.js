@@ -3,7 +3,8 @@ import { withFields, WithFieldsError } from "@commodo/fields";
 
 import { compose } from "ramda";
 
-const Model = compose(withFields({ exampleField: object() }))(function() {});
+const Model = compose(withFields({ exampleField: object() }))();
+
 describe("field string test", () => {
     test("should accept any object values", () => {
         const model = new Model();
