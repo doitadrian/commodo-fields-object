@@ -42,7 +42,7 @@
     "wait-on": "^3.2.0"
   },
   "dependencies": {
-    "@commodo/fields": "^0.2.6"
+    "@commodo/fields": "^1.0.0"
   },
   "scripts": {
     "cz": "git-cz",
