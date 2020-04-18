@@ -1,7 +1,7 @@
 {
   "name": "commodo-fields-object",
   "version": "0.0.0-development",
-  "description": "A object field for Commodo composable models.",
+  "description": "A simple object field, used with the Commodo \"withFields\" higher order function.",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
