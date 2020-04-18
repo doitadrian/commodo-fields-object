@@ -88,7 +88,10 @@ company.populate = {
 };
 ```
 
-### When to use this field?
+## When to use this field?
+This field can be used when you don't have a fixed structure of the data that's going to be assigned to it. The above example shows a perfect situation where this is necessary. Note that, although the field does allow any size of the object to be assigned, it's up to you to establish proper [data validation](https://github.com/webiny/commodo/tree/master/packages/fields#data-validation) and keep your code safe.
+
+Finally, if you have a fixed structure of the data, it's always best to use the [`fields`](https://github.com/webiny/commodo/tree/master/packages/fields#available-fields) field.
 
 ## Contributors
 
